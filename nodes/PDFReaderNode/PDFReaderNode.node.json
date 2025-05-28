@@ -1,0 +1,62 @@
+{
+  "name": "pdfReaderNode",
+  "displayName": "PDF Reader",
+  "icon": "file:pdfReader.svg",
+  "group": ["transform"],
+  "version": 1,
+  "description": "Reads PDF files and extracts text content",
+  "defaults": {
+    "name": "PDF Reader"
+  },
+  "inputs": ["main"],
+  "outputs": ["main"],
+  "properties": [
+    {
+      "displayName": "File Path",
+      "name": "filePath",
+      "type": "string",
+      "default": "",
+      "placeholder": "C:/Users/khali/Downloads/Lab Session 29.pdf",
+      "description": "Path to the PDF file to read",
+      "required": true
+    },
+    {
+      "displayName": "Extraction Method",
+      "name": "extractionMethod",
+      "type": "options",
+      "options": [
+        {
+          "name": "Poppler Utils (pdftotext)",
+          "value": "popplerUtils",
+          "description": "Uses poppler-utils for extraction (recommended)"
+        },
+        {
+          "name": "Text Only",
+          "value": "textOnly",
+          "description": "Simple text extraction without layout preservation"
+        },
+        {
+          "name": "With Layout",
+          "value": "withLayout",
+          "description": "Attempts to preserve document layout"
+        }
+      ],
+      "default": "popplerUtils",
+      "description": "Method to use for extracting text from PDF"
+    },
+    {
+      "displayName": "Include Metadata",
+      "name": "includeMetadata",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to include PDF metadata in the output"
+    },
+    {
+      "displayName": "Page Range",
+      "name": "pageRange",
+      "type": "string",
+      "default": "all",
+      "description": "Range of pages to extract (e.g., \"1-5\" or \"all\")"
+    }
+  ]
+}

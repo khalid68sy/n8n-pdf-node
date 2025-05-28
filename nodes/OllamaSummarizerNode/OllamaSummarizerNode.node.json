@@ -1,0 +1,95 @@
+{
+  "name": "ollamaSummarizerNode",
+  "displayName": "Ollama Summarizer",
+  "icon": "file:ollamaSummarizer.svg",
+  "group": ["transform"],
+  "version": 1,
+  "description": "Summarizes text using Ollama LLM",
+  "defaults": {
+    "name": "Ollama Summarizer"
+  },
+  "inputs": ["main"],
+  "outputs": ["main"],
+  "properties": [
+    {
+      "displayName": "Ollama API Endpoint",
+      "name": "ollamaEndpoint",
+      "type": "string",
+      "default": "http://localhost:11434",
+      "description": "URL of the Ollama API",
+      "required": true
+    },
+    {
+      "displayName": "Model",
+      "name": "model",
+      "type": "string",
+      "default": "llama3",
+      "description": "LLM model to use for summarization",
+      "required": true
+    },
+    {
+      "displayName": "API Method",
+      "name": "apiMethod",
+      "type": "options",
+      "options": [
+        {
+          "name": "Generate",
+          "value": "generate",
+          "description": "Use the /api/generate endpoint"
+        },
+        {
+          "name": "Chat",
+          "value": "chat",
+          "description": "Use the /api/chat endpoint"
+        }
+      ],
+      "default": "generate",
+      "description": "Ollama API method to use"
+    },
+    {
+      "displayName": "Prompt Template",
+      "name": "promptTemplate",
+      "type": "string",
+      "default": "Please summarize the following document content in a concise manner:\n\n{{data}}",
+      "description": "Template for constructing the prompt. Use {{data}} as placeholder for the input data.",
+      "typeOptions": {
+        "rows": 4
+      }
+    },
+    {
+      "displayName": "Temperature",
+      "name": "temperature",
+      "type": "number",
+      "default": 0.7,
+      "description": "Controls randomness in the output (0.0-1.0)",
+      "typeOptions": {
+        "minValue": 0,
+        "maxValue": 1
+      }
+    },
+    {
+      "displayName": "Max Tokens",
+      "name": "maxTokens",
+      "type": "number",
+      "default": 500,
+      "description": "Maximum number of tokens in the response",
+      "typeOptions": {
+        "minValue": 1
+      }
+    },
+    {
+      "displayName": "Include Input Data",
+      "name": "includeInputData",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include the input data in the output"
+    },
+    {
+      "displayName": "Include Model Info",
+      "name": "includeModelInfo",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to include model information in the output"
+    }
+  ]
+}

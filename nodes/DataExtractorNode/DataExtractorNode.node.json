@@ -1,0 +1,58 @@
+{
+  "name": "dataExtractorNode",
+  "displayName": "Data Extractor",
+  "icon": "file:dataExtractor.svg",
+  "group": ["transform"],
+  "version": 1,
+  "description": "Extracts structured data from PDF text content",
+  "defaults": {
+    "name": "Data Extractor"
+  },
+  "inputs": ["main"],
+  "outputs": ["main"],
+  "properties": [
+    {
+      "displayName": "Extraction Rules",
+      "name": "extractionRules",
+      "type": "json",
+      "default": "{\n  \"title\": {\n    \"pattern\": \"Title:\\\\s*(.+)\",\n    \"type\": \"string\"\n  },\n  \"date\": {\n    \"pattern\": \"Date:\\\\s*(\\\\d{2}/\\\\d{2}/\\\\d{4})\",\n    \"type\": \"date\"\n  },\n  \"amount\": {\n    \"pattern\": \"Amount:\\\\s*\\\\$(\\\\d+\\\\.\\\\d{2})\",\n    \"type\": \"number\"\n  }\n}",
+      "description": "JSON object defining extraction patterns using regular expressions",
+      "typeOptions": {
+        "rows": 8
+      }
+    },
+    {
+      "displayName": "Output Format",
+      "name": "outputFormat",
+      "type": "options",
+      "options": [
+        {
+          "name": "JSON",
+          "value": "json",
+          "description": "Output as JSON object"
+        },
+        {
+          "name": "Key-Value Pairs",
+          "value": "keyValue",
+          "description": "Output as simple key-value pairs"
+        }
+      ],
+      "default": "json",
+      "description": "Format for the extracted data"
+    },
+    {
+      "displayName": "Include Raw Text",
+      "name": "includeRawText",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include the original raw text in the output"
+    },
+    {
+      "displayName": "Include Extraction Metadata",
+      "name": "includeExtractionMetadata",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to include metadata about the extraction process"
+    }
+  ]
+}

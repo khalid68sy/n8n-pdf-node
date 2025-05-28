@@ -1,0 +1,91 @@
+{
+  "name": "fileOutputNode",
+  "displayName": "File Output",
+  "icon": "file:fileOutput.svg",
+  "group": ["output"],
+  "version": 1,
+  "description": "Saves content to a file",
+  "defaults": {
+    "name": "File Output"
+  },
+  "inputs": ["main"],
+  "outputs": ["main"],
+  "properties": [
+    {
+      "displayName": "Output Path",
+      "name": "outputPath",
+      "type": "string",
+      "default": "/tmp",
+      "description": "Directory path where the file should be saved",
+      "required": true
+    },
+    {
+      "displayName": "File Name",
+      "name": "fileName",
+      "type": "string",
+      "default": "summary_{{timestamp}}.txt",
+      "description": "Name of the output file. Use {{timestamp}} for dynamic naming.",
+      "required": true
+    },
+    {
+      "displayName": "File Format",
+      "name": "fileFormat",
+      "type": "options",
+      "options": [
+        {
+          "name": "Text",
+          "value": "txt",
+          "description": "Plain text file"
+        },
+        {
+          "name": "Markdown",
+          "value": "md",
+          "description": "Markdown formatted file"
+        },
+        {
+          "name": "JSON",
+          "value": "json",
+          "description": "JSON formatted file"
+        }
+      ],
+      "default": "txt",
+      "description": "Format of the output file"
+    },
+    {
+      "displayName": "Content Field",
+      "name": "contentField",
+      "type": "string",
+      "default": "summary",
+      "description": "Field from the input data to save as content",
+      "required": true
+    },
+    {
+      "displayName": "Append to File",
+      "name": "appendToFile",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to append to an existing file instead of overwriting"
+    },
+    {
+      "displayName": "Create Directory if Missing",
+      "name": "createDirectory",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to create the output directory if it does not exist"
+    },
+    {
+      "displayName": "Include Timestamp in Content",
+      "name": "includeTimestamp",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include a timestamp in the file content"
+    },
+    {
+      "displayName": "Include Metadata",
+      "name": "includeMetadata",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include metadata about the source in the file"
+    }
+  ]
+}
